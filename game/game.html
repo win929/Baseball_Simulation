@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>202002529 이어진 Term Project Game Page</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="gameStyle.css">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2>Baseball Simulation</h2>
+        <div id="batters"></div>
+        <img src="field/0111.png" alt="field" id="field">
+        <span id="score">
+            <div id="pc">PC</div>
+            <div id="pcScore">0</div>
+            <div id="userScore">0</div>
+            <div id="teamNickname"></div>
+        </span>
+        <span id="ballCount">
+            <div id="ball" class="bsoRow">
+                <div class="bso">B</div>
+                <div id="bCount" class="counts">
+                    <div class="circle" id="b1"></div><div class="circle" id="b2"></div><div class="circle" id="b3"></div>
+                </div>
+            </div>
+            <div id="strike" class="bsoRow">
+                <div class="bso">S</div>
+                <div id="sCount" class="counts">
+                    <div class="circle" id="s1"></div><div class="circle" id="s2"></div>
+                </div>
+            </div>
+            <div id="out" class="bsoRow">
+                <div class="bso">O</div>
+                <div id="oCount" class="counts">
+                    <div class="circle" id="o1"></div><div class="circle" id="o2"></div>
+                </div>
+            </div>
+        </span>
+        <span id="zone">
+            <div id="ballZone">
+                <div id="strikeZone">
+                </div>
+            </div>
+        </span>
+        <img src="img/ball.png" alt="top_ball_img" class="ball_img" id="ball_img_top">
+        <img src="img/bat.png" alt="top_bat_img" class="bat_img" id="bat_img_top">
+        <img src="img/ball.png" alt="botoom_ball_img" class="ball_img" id="ball_img_bottom">
+        <img src="img/bat.png" alt="botoom_bat_img" class="bat_img" id="bat_img_bottom">
+        <img src="img/ball.png" alt="left_ball_img" class="ball_img" id="ball_img_left">
+        <img src="img/bat.png" alt="left_bat_img" class="bat_img" id="bat_img_left">
+        <img src="img/ball.png" alt="right_ball_img" class="ball_img" id="ball_img_right">
+        <img src="img/bat.png" alt="right_bat_img" class="bat_img" id="bat_img_right">
+        <img src="img/ball.png" alt="ball_ball_img" class="ball_img" id="ball_img_ball">
+        <img src="img/bat.png" alt="ball_bat_img" class="bat_img" id="bat_img_ball">
+        <textarea id="commentary" readonly></textarea>
+        <p id="play">START</p>
+        <i class="material-icons" id="playButton">play_arrow</i>
+        <div class="modal" id="settingModal">
+            <div id="icon"><i class="material-icons" id="closeButton">close</i></div>
+            <div class="button">
+                <button class="btn" id="restartButton"><span>다시 하기</span></button>
+            </div>
+            <div class="button">
+                <button class="btn" id="homeButton"><span>포기 하기</span></button>
+            </div>
+        </div>
+        <img src="img/result_pitcher.png" alt="result_pitcher" id="result_pitcher">
+        <img src="img/result_batter.png" alt="result_batter" id="result_batter">
+        <div class="modal" id="gameover">
+            <div id="result">WIN</div>
+            <div id="finalScore">
+                <div id="PcName">PC</div>
+                <div id="finalScorePc">1</div>
+                <div id="vs">:</div>
+                <div id="finalScoreUser">2</div>
+                <div id="UserName">USER</div>
+            </div>
+            <div id="finalButton">
+                <div class="button">
+                    <button class="btn" id="restartButton2"><span>다시 하기</span></button>
+                </div>
+                <div class="button">
+                    <button class="btn" id="homeButton2"><span>홈으로</span></button>
+                </div>
+            </div>
+        </div>
+        <i class="material-icons" id="setting">settings</i>
+        <i class="material-icons" id="volumeUp">volume_up</i>
+        <i class="material-icons" id="volumeOff">volume_off</i>
+        <div id="version">
+            ver 1.4
+        </div>
+        <div id="developer">
+            202002529 이어진
+        </div>
+    </div>
+    <script src="gameScript.js"></script>
+</body>
+</html>

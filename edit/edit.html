@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <title>202002529 이어진 Term Project Edit Page</title>
+    <!-- External CSS -->
+    <link rel="stylesheet" href="editStyle.css">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h2>Baseball Simulation</h2>
+        <div id="batters">
+            <p id="nameLimit">(2~4자)</p>
+            <p>1번타자 <input type="text" value="김일번" id="batter1"></input></p>
+            <p>2번타자 <input type="text" value="손이번" id="batter2"></input></p>
+            <p>3번타자 <input type="text" value="양삼번" id="batter3"></input></p>
+            <p>4번타자 <input type="text" value="이사번" id="batter4"></input></p>
+            <p>5번타자 <input type="text" value="임오번" id="batter5"></input></p>
+            <p>6번타자 <input type="text" value="정육번" id="batter6"></input></p>
+            <p>7번타자 <input type="text" value="진칠번" id="batter7"></input></p>
+            <p>8번타자 <input type="text" value="최팔번" id="batter8"></input></p>
+            <p>9번타자 <input type="text" value="한구번" id="batter9"></input></p>
+        </div>
+        <div id="center">
+            <div id="teamName">
+                <p>팀 이름 <span id="teamNameLimit">(2~10자)</span></p>
+                <p><input type="text" value="컴퓨터융합학부" id="teamNameInput"></input></p>
+            </div>
+            <div id="teamAcronym">
+                <p>팀 약칭 <span id="teamAcronymLimit">(2~3자)</span></p>
+                <p><input type="text" value="컴융" id="teamAcronymInput"></input></p>
+            </div>
+            <div id="level">
+                <p><label for="difficulty">난이도</label>
+                <br>
+                <select id="difficulty" name="difficulty">
+                <option value="easy" selected>1점차</option>
+                <option value="normal">3점차</option>
+                <option value="hard">5점차</option>
+                </select>
+                </p>
+            </div>
+        </div>
+        <div id="button1">
+            <button class="btn" id="startButton"><span>시작 하기</span></button>
+        </div>
+        <div id="button2">
+            <button class="btn" id="backButton"><span>뒤로 가기</span></button>
+        </div>
+        <i class="material-icons" id="volumeUp">volume_up</i>
+        <i class="material-icons" id="volumeOff">volume_off</i>
+        <div id="version">
+            ver 1.4
+        </div>
+        <div id="developer">
+            202002529 이어진
+        </div>
+    </div>
+    <div class="modal" id="okModal">
+        <div>선수, 팀, 난이도를 수정할 수 있습니다.<br><br></div>
+        <button class="btn" id="modalCloseButton"><span>확인</span></button>
+    </div>
+    <script src="editScript.js"></script>
+</body>
+</html>

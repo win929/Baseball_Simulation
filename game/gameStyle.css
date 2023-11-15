@@ -1,0 +1,412 @@
+h2 {
+    font-size: 50px;
+    color: #5972BE;
+    font-family: fantasy;
+    margin: 20px;
+}
+
+#version {
+    position: fixed;
+    bottom: 3%;
+    right: 0;
+    margin: 10px;
+    color: white;
+}
+
+#developer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 10px;
+    color: white;
+}
+
+body::before {
+    content: "";
+    background-image: url("img/game_img.jpg");
+    filter: blur(5px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#volumeUp {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin: 10px;
+    color: white;
+    display: none;
+}
+
+#volumeOff {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin: 10px;
+    color: white;
+}
+
+#setting {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    color: white;
+}
+
+.button {
+    text-align: center;
+    margin: 20px;
+}
+
+.btn {
+    border: none;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+    font-weight: 700;
+    font-size: 20px;
+    background-color: #222;
+    padding: 17px 60px;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+  
+.btn span {
+    position: relative; 
+    z-index: 1;
+}
+  
+.btn:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 400%;
+    width: 140%;
+    background: #5972BE;
+    -webkit-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+    -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
+    transform: translateX(-98%) translateY(-25%) rotate(45deg);
+}
+  
+#homeButton2:after {
+    height: 400%;
+    width: 160%;
+}
+
+.btn:hover:after {
+    -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
+    transform: translateX(-9%) translateY(-25%) rotate(45deg);
+}
+
+#settingModal {
+    width: 320px;
+    height: 230px;
+    padding: 30px;
+    border: 2px ridge;
+    border-radius: 5px;
+    background-color: #5972BE;
+    display: none;
+    position: fixed;
+    top: 25%;
+    left: 37.5%;
+}
+
+#gameover {
+    width: 800px;
+    height: 350px;
+    padding: 30px;
+    border: 2px ridge;
+    border-radius: 5px;
+    background-color: #5972BE;
+    display: none;
+    position: fixed;
+    top: 25%;
+    left: 22%;
+    text-align: center;
+}
+
+#result_pitcher {
+    height: 15%;
+    width: auto;
+    z-index: 1;
+    position: fixed;
+    top: 30%;
+    left: 30%;
+    display: none;
+}
+
+#result_batter {
+    height: 15%;
+    width: auto;
+    z-index: 1;
+    position: fixed;
+    top: 30%;
+    left: 62%;
+    display: none;
+}
+
+#result {
+    font-size: 100px;
+}
+
+#finalScore {
+    font-size: 50px;
+    display: flex;
+    flex-direction: row;
+}
+
+#finalScorePc, #finalScoreUser {
+    width: 100px;
+}
+
+#PcName, #UserName {
+    width: 250px;
+}
+
+#vs {
+    width: 100px;
+}
+
+#finalButton {
+    position: fixed;
+    top: 70%;
+    left: 34%;
+    display: flex;
+    flex-direction: row;
+}
+
+#icon {
+    text-align: right;
+}
+
+#field {
+    width: 400px;
+    height: 400px;
+    position: fixed;
+    top: 20%;
+    left: 19%;
+}
+
+#batters {
+    width: 200px;
+    height: 430px;
+    background-color: rgba(0, 0, 0, 0.7);
+    font-size: 35px;
+    text-align: center;
+    position: fixed;
+    top: 19%;
+    left: 3%;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+#score {
+    width: 350px;
+    background-color: black;
+    font-size: 35px;
+    text-align: center;
+    position: fixed;
+    top: 12%;
+    left: 48%;
+    color: white;
+    display: flex;
+    flex-direction: row;
+}
+
+#pc, #teamNickname {
+    width: 140px;
+    border: 1px solid white;
+}
+
+#pcScore, #userScore {
+    width: 35px;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+}
+
+#pcScore {
+    border-right: 1px solid white;
+}
+
+#ballCount {
+    width: 200px;
+    background-color: black;
+    color: white;
+    font-size: 35px;
+    text-align: center;
+    position: fixed;
+    top: 20%;
+    left: 53%;
+}
+
+.bsoRow {
+    height: 50px;
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+}
+
+#ball {
+    border: 1px solid white;
+}
+
+#strike {
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+}
+
+#out {
+    border: 1px solid white;
+}
+
+.bso {
+    height: 50px;
+    width: 50px;
+    border-right: 1px solid white;
+}
+
+.counts {
+    display: flex;
+    flex-direction: row;
+}
+
+.circle {
+    margin: 0 auto;
+    width: 30px;
+    height: 30px;
+    border: 5px solid white;
+    border-radius: 50%;
+    margin: 5px;
+}
+
+#zone {
+    position: fixed;
+    top: 43%;
+    left: 51.4%;
+    pointer-events : none;
+}
+
+#ballZone {
+    width: 250px;
+    height: 300px;
+    background-color: rgba(9, 91, 16, 0.7);
+    border: 1px solid white;
+}
+
+#strikeZone {
+    width: 0px;
+    height: 0px;
+    border-top: 100px solid rgba(255, 100, 100, 0.9);
+    border-left: 75px solid rgba(255, 100, 100, 0.7);
+    border-right: 75px solid rgba(255, 100, 100, 0.7);
+    border-bottom: 100px solid rgba(255, 100, 100, 0.9);
+    position: fixed;
+    top: 50%;
+    left: 54.8%;
+}
+
+#commentary {
+    width: 370px;
+    height: 500px;
+    position: fixed;
+    top: 14%;
+    left: 73%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 20px;
+    resize: none;
+}
+
+#play {
+    position: fixed;
+    top: 22%;
+    left: 80.5%;
+    color: white;
+    font-size: 50px;
+}
+
+#playButton {
+    position: fixed;
+    top: 35%;
+    left: 78.5%;
+    color: white;
+    font-size: 200px;
+}
+
+.ball_img, .bat_img {
+    height: 5%;
+    width: auto;
+    display: none;
+}
+
+#ball_img_top {
+    position: fixed;
+    top: 53%;
+    left: 58.5%;
+}
+
+#bat_img_top {
+    position: fixed;
+    top: 53%;
+    left: 54%;
+}
+
+#ball_img_bottom {
+    position: fixed;
+    top: 71%;
+    left: 58.5%;
+}
+
+#bat_img_bottom {
+    position: fixed;
+    top: 71%;
+    left: 54%;
+}
+
+#ball_img_left {
+    position: fixed;
+    top: 62%;
+    left: 55.5%;
+}
+
+#bat_img_left {
+    position: fixed;
+    top: 62%;
+    left: 51%;
+}
+
+#ball_img_right {
+    position: fixed;
+    top: 62%;
+    left: 61.5%;
+}
+
+#bat_img_right {
+    position: fixed;
+    top: 62%;
+    left: 57%;
+}
+
+#ball_img_ball {
+    position: fixed;
+    top: 62%;
+    left: 52%;
+}
+
+#bat_img_ball {
+    position: fixed;
+    top: 62%;
+    left: 47.5%;
+}
