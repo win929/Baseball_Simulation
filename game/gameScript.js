@@ -1,71 +1,136 @@
-// 오디오 기능
+// 클릭 효과음
+var click = new Audio('../click.mp3');
+
+// game.html 배경음악
 var audio = new Audio('audio/game_audio.mp3');
+
+// 안타 효과음
 var hitSound = new Audio('audio/hit_sound.mp3');
+
+// 함성 효과음
 var yellSound = new Audio('audio/yell_sound.mp3');
+
+// 게임 시작 효과음
 var playballSound = new Audio('audio/playball_sound.mp3');
+
+// 스트라이크 효과음
 var strikeSound = new Audio('audio/strike_sound.mp3');
+
+// 볼 효과음
 var ballSound = new Audio('audio/ball_sound.mp3');
 
-document.getElementById('volumeOff').addEventListener('click', function() {
-    // home_audio.mp3 재생
+// 버튼에 마우스를 올릴 때
+function mouseOver() {
+    // 클릭 효과음 재생
+    click.play();
+}
+
+// 게임시작
+document.getElementById('playButton').addEventListener('click', function() {
+    // 배경음악 재생
     audio.play();
 
-    // volumeOff 이미지 변경
+    // volumeOff -> volumeOn 이미지 변경
     document.getElementById('volumeOff').style.display = 'none';
-    document.getElementById('volumeUp').style.display = 'block';
+    document.getElementById('volumeOn').style.display = 'block';
+
+    // 게임 시작 버튼 숨기기
+    document.getElementById('play').style.display = 'none';
+    document.getElementById('playButton').style.display = 'none';
+
+    // 게임 시작 효과음 재생
+    playballSound.play();
+
+    // 해설 추가
+    addCommentary("(스트라이크나 볼을 선택하면 게임이 시작됩니다.)\n");
+    addCommentary("[PC] "+pcScore.textContent+" : "+userScore.textContent+" "+"["+teamName+"]");
+    addCommentary("- 9회말 무사 만루 -\n");
+    addCommentary("["+(batterIndex+1)+"번타자 "+batters[batterIndex]+"]");
+    
+    // 타자 선택
+    document.getElementById('batter'+batterIndex).style.border = '1px solid yellow';
+    document.getElementById('batter'+batterIndex).style.color = 'white';
+
+    // 스트라이크, 볼 존 클릭 가능
+    document.getElementById('zone').style.pointerEvents = 'auto';
 });
 
-document.getElementById('volumeUp').addEventListener('click', function() {
-    // home_audio.mp3 중지
-    audio.pause();
-
-    // volumeUp 이미지 변경
-    document.getElementById('volumeUp').style.display = 'none';
-    document.getElementById('volumeOff').style.display = 'block';
-});
-
+// 설정 버튼 클릭 시
 document.getElementById('setting').addEventListener('click', function() {
+    // 설정 모달창 보이기
     document.getElementById('settingModal').style.display = 'block';
 });
 
-var click = new Audio('../click.mp3');
-
-document.getElementById("restartButton").addEventListener("mouseover", function() {
-    click.play();
-});
-
+// restartButton 클릭 시
 document.getElementById("restartButton").addEventListener("click", function() {
+    // 게임 재시작
     window.location.reload();
 });
 
-document.getElementById("restartButton2").addEventListener("mouseover", function() {
-    click.play();
-});
-
-document.getElementById("restartButton2").addEventListener("click", function() {
-    window.location.reload();
-});
-
-document.getElementById('homeButton').addEventListener('mouseover', function() {
-    click.play();
-});
-
+// homeButton 클릭 시
 document.getElementById('homeButton').addEventListener('click', function() {
+    // home.html로 이동
     window.location.href = '../home/home.html';
 });
 
-document.getElementById('homeButton2').addEventListener('mouseover', function() {
-    click.play();
-});
-
-document.getElementById('homeButton2').addEventListener('click', function() {
-    window.location.href = '../home/home.html';
-});
-
+// closeButton 클릭 시
 document.getElementById("closeButton").addEventListener("click", function() {
+    // 설정 모달창 닫기
     var modal = document.getElementById("settingModal");
     modal.style.display = "none";
 });
+
+// restartButton2 클릭 시
+document.getElementById("restartButton2").addEventListener("click", function() {
+    // 게임 재시작
+    window.location.reload();
+});
+
+// homeButton2 클릭 시
+document.getElementById('homeButton2').addEventListener('click', function() {
+    // home.html로 이동
+    window.location.href = '../home/home.html';
+});
+
+// volumeOff 클릭 시
+document.getElementById('volumeOff').addEventListener('click', function() {
+    // 배경음악 재생
+    audio.play();
+
+    // volumeOff -> volumeOn 이미지 변경
+    document.getElementById('volumeOff').style.display = 'none';
+    document.getElementById('volumeOn').style.display = 'block';
+});
+
+// volumeOn 클릭 시
+document.getElementById('volumeOn').addEventListener('click', function() {
+    // 배경음악 중지
+    audio.pause();
+
+    // volumeOn -> volumeOff 이미지 변경
+    document.getElementById('volumeOn').style.display = 'none';
+    document.getElementById('volumeOff').style.display = 'block';
+});
+
+// 현재 루 상황 (홈, 1루, 2루, 3루)
+// 루 상황이 바뀔 때마다 field 이미지를 변경 (현재 0111.png)
+var base = [0, 1, 1, 1]; // 초기는 만루 상황
+
+// 타자 인덱스
+var batterIndex = 0;
+
+// 볼카운트
+var ballCount = 0;
+var strikeCount = 0;
+var outCount = 0;
+
+// 팀 이름
+var teamName = sessionStorage.getItem('teamName');
+
+// 팀 약자
+var teamNickname = sessionStorage.getItem('teamNickname');
+var teamNicknameElement = document.getElementById('teamNickname');
+teamNicknameElement.textContent = teamNickname;
 
 // 타순
 var batters = JSON.parse(sessionStorage.getItem('batters'));
@@ -92,11 +157,6 @@ for (var i = 0; i < batters.length; i++) {
     battersElement.appendChild(batterbox);
 }
 
-// 팀 약자
-var teamNickname = sessionStorage.getItem('teamNickname');
-var teamNicknameElement = document.getElementById('teamNickname');
-teamNicknameElement.textContent = teamNickname;
-
 // 스코어보드
 var difficulty = sessionStorage.getItem('difficulty');
 var pcScore = document.getElementById('pcScore');
@@ -110,33 +170,38 @@ if (difficulty == 'easy') {
 var userScore = document.getElementById('userScore');
 var score = Number(userScore.textContent);
 
-// 현재 루 상황 (홈, 1루, 2루, 3루)
-// 루 상황이 바뀔 때마다 field 이미지를 변경 (현재 0111.png)
-var base = [0, 1, 1, 1]; // 초기는 만루 상황
+// 해설창
+var commentaryBox = document.getElementById('commentary');
 
-// 타자
-var batterIndex = 0;
-
-// 볼카운트
-var ballCount = 0;
-var strikeCount = 0;
-var outCount = 0;
+// 해설 추가 함수
+function addCommentary(text) {
+    commentaryBox.value += text + "\n";
+    commentaryBox.scrollTop = commentaryBox.scrollHeight;
+}
 
 // 게임 종료 조건
 function isgameover() {
+    // 3아웃이거나 역전했을 때
     if (outCount == 3 || score > Number(pcScore.textContent)) {
         setTimeout(() => {
+            // ball 이미지 숨기기
             var allBall = document.getElementsByClassName('ball_img');
             for (var i = 0; i < allBall.length; i++) {
                 allBall[i].style.display = 'none';
             }
+
+            // bat 이미지 숨기기
             var allbat = document.getElementsByClassName('bat_img');
             for (var i = 0; i < allbat.length; i++) {
                 allbat[i].style.display = 'none';
             }
+
+            // 게임 종료 모달창 보이기
             document.getElementById('gameover').style.display = 'block';
             document.getElementById('result_pitcher').style.display = 'block';
             document.getElementById('result_batter').style.display = 'block';
+
+            // 게임 결과 계산
             var result = document.getElementById('result');
             if (score > Number(pcScore.textContent)) {
                 result.textContent = "WIN";
@@ -145,6 +210,8 @@ function isgameover() {
             } else {
                 result.textContent = "LOSE";
             }
+
+            // 게임 결과 모달창에 표시
             document.getElementById('finalScorePc').textContent = pcScore.textContent;
             document.getElementById('finalScoreUser').textContent = userScore.textContent;
             document.getElementById('UserName').textContent = teamName;
@@ -154,22 +221,26 @@ function isgameover() {
 
 // ball 이미지 함수
 function ballImg(location) {
+    // 모든 공 이미지 숨기기
     var allBall = document.getElementsByClassName('ball_img');
     for (var i = 0; i < allBall.length; i++) {
         allBall[i].style.display = 'none';
     }
 
+    // pc가 선택한 공 이미지 보이기
     var ball = document.getElementById('ball_img_'+location);
     ball.style.display = 'block';
 }
 
 // bat 이미지 함수
 function batImg(location) {
+    // 모든 배트 이미지 숨기기
     var allbat = document.getElementsByClassName('bat_img');
     for (var i = 0; i < allbat.length; i++) {
         allbat[i].style.display = 'none';
     }
 
+    // 사용자가 선택한 배트 이미지 보이기
     var bat = document.getElementById('bat_img_'+location);
     bat.style.display = 'block';
 }
@@ -177,13 +248,13 @@ function batImg(location) {
 // 스트라이크 존 클릭 이벤트
 document.getElementById('strikeZone').addEventListener('click', function(e) {
     var rect = e.target.getBoundingClientRect();
-    var x = e.clientX - rect.left; // x position within the element.
-    var y = e.clientY - rect.top;  // y position within the element.
+    var x = e.clientX - rect.left; // x 좌표
+    var y = e.clientY - rect.top;  // y 좌표
 
     var width = rect.right - rect.left;
     var height = rect.bottom - rect.top;
 
-    // strikeZone을 대각선으로 4등분 했을 때, 각 영역에 대한 클릭을 처리합니다.
+    // strikeZone을 대각선으로 4등분 했을 때, 각 영역에 대한 클릭을 처리
     if (y < (height / width) * x && y < height - (height / width) * x) {
         batImg('top');
         batting('top');
@@ -418,6 +489,7 @@ function baseCount(hit) {
         runCount = 4;
     }
 
+    // 루 상황 계산
     for (var i = 3; i > 0; i--) {
         if (base[i] == 1) {
             if (i+runCount > 3) {
@@ -430,25 +502,32 @@ function baseCount(hit) {
         }
     }
 
+    // 현재 타자의 루 상황 계산
     if (runCount != 4) {
         base[runCount] = 1;
     }
 
+    // 점수 계산
     if (base[0] != 0) {
         score += base[0];
         userScore.textContent = score;
         base[0] = 0;
     }
 
+    // field 이미지 변경
     var field = document.getElementById('field');
     field.src = 'field/'+'0'+base[1]+base[2]+base[3]+'.png';
 
+    // 게임 종료 확인
     isgameover();
+
+    // 타자 변경
     changeBatter();
 }
 
 // 디스플레이 계산 함수
 function display() {
+    // 볼 카운트 디스플레이
     if (ballCount != 0) {
         document.getElementById('b'+ballCount).style.backgroundColor = 'green';
     } else {
@@ -457,6 +536,7 @@ function display() {
         }
     }
 
+    // 스트라이크 카운트 디스플레이
     if (strikeCount != 0) {
         document.getElementById('s'+strikeCount).style.backgroundColor = 'yellow';
     } else {
@@ -465,6 +545,7 @@ function display() {
         }
     }
 
+    // 아웃 카운트 디스플레이
     if (outCount != 0) {
         document.getElementById('o'+outCount).style.backgroundColor = 'red';
     } else {
@@ -476,53 +557,20 @@ function display() {
 
 // 타자 변경 함수
 function changeBatter() {
+    // 이전 타자 선택 해제
     document.getElementById('batter'+batterIndex).style.border = 'none';
     document.getElementById('batter'+batterIndex).style.color = 'rgba(255, 255, 255, 0.3)';
 
+    // 다음 타자
     batterIndex++;
     if (batterIndex == 9) {
         batterIndex = 0;
     }
 
+    // 해설 추가
     addCommentary("\n["+(batterIndex+1)+"번타자 "+batters[batterIndex]+"]");
 
-    document.getElementById('batter'+batterIndex).style.border = '1px solid yellow';
-    document.getElementById('batter'+batterIndex).style.color = 'white';
-}
-
-// 해설창
-var commentaryBox = document.getElementById('commentary');
-function addCommentary(text) {
-    commentaryBox.value += text + "\n";
-    commentaryBox.scrollTop = commentaryBox.scrollHeight;
-}
-
-// 팀 이름
-var teamName = sessionStorage.getItem('teamName');
-
-// 게임시작
-document.getElementById('playButton').addEventListener('click', function() {
-    // home_audio.mp3 재생
-    audio.play();
-
-    // volumeOff 이미지 변경
-    document.getElementById('volumeOff').style.display = 'none';
-    document.getElementById('volumeUp').style.display = 'block';
-
-    document.getElementById('play').style.display = 'none';
-    document.getElementById('playButton').style.display = 'none';
-
-    playballSound.play();
-
-    // 해설
-    addCommentary("(스트라이크나 볼을 선택하면 게임이 시작됩니다.)\n");
-    addCommentary("[PC] "+pcScore.textContent+" : "+userScore.textContent+" "+"["+teamName+"]");
-    addCommentary("- 9회말 무사 만루 -\n");
-    addCommentary("["+(batterIndex+1)+"번타자 "+batters[batterIndex]+"]");
-    
     // 타자 선택
     document.getElementById('batter'+batterIndex).style.border = '1px solid yellow';
     document.getElementById('batter'+batterIndex).style.color = 'white';
-
-    document.getElementById('zone').style.pointerEvents = 'auto';
-});
+}

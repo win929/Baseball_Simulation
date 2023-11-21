@@ -35,7 +35,7 @@ body::before {
     background-size: cover;
 }
 
-#volumeUp {
+#volumeOn {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -95,9 +95,7 @@ body::before {
     height: 400%;
     width: 140%;
     background: #5972BE;
-    -webkit-transition: all .5s ease-in-out;
     transition: all .5s ease-in-out;
-    -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
     transform: translateX(-98%) translateY(-25%) rotate(45deg);
 }
   
@@ -107,7 +105,6 @@ body::before {
 }
 
 .btn:hover:after {
-    -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
     transform: translateX(-9%) translateY(-25%) rotate(45deg);
 }
 

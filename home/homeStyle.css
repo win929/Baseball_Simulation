@@ -41,14 +41,11 @@ h1 {
     height: 400%;
     width: 140%;
     background: #5972BE;
-    -webkit-transition: all .5s ease-in-out;
     transition: all .5s ease-in-out;
-    -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
     transform: translateX(-98%) translateY(-25%) rotate(45deg);
 }
   
 .btn:hover:after {
-    -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
     transform: translateX(-9%) translateY(-25%) rotate(45deg);
 }
 
@@ -60,14 +57,11 @@ h1 {
     height: 320%;
     width: 150%;
     background: #5972BE;
-    -webkit-transition: all .5s ease-in-out;
     transition: all .5s ease-in-out;
-    -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
     transform: translateX(-98%) translateY(-25%) rotate(45deg);
 }
   
 #versionCloseButton:hover:after {
-    -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
     transform: translateX(-9%) translateY(-25%) rotate(45deg);
 }
 
@@ -117,7 +111,7 @@ body::before {
     background-size: cover;
 }
 
-#volumeUp {
+#volumeOn {
     position: fixed;
     bottom: 0;
     left: 0;

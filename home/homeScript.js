@@ -1,51 +1,60 @@
+// 클릭 효과음
 var click = new Audio('../click.mp3');
+
+// home.html 배경음악
 var audio = new Audio('audio/home_audio.mp3');
 
-document.getElementById('versionCloseButton').addEventListener('mouseover', function() {
+// 버튼에 마우스를 올릴 때
+function mouseOver() {
+    // 클릭 효과음 재생
     click.play();
-});
+}
 
+// versionCloseButton 클릭 시
 document.getElementById('versionCloseButton').addEventListener('click', function() {
-    document.getElementById('volumeOff').style.pointerEvents = 'auto';
-
+    // versionModal 숨기기
     document.getElementById('versionModal').style.display = 'none';
     
+    // 배경음악 재생
     audio.play();
+    
+    // volumeOff -> volumeOn 이미지 변경
     document.getElementById('volumeOff').style.display = 'none';
-    document.getElementById('volumeUp').style.display = 'block';
+    document.getElementById('volumeOn').style.display = 'block';
+
+    // volumeOff, volumeOn 클릭 가능
+    document.getElementById('volumeOff').style.pointerEvents = 'auto';
 });
 
-document.getElementById("startButton").addEventListener("mouseover", function() {
-    click.play();
-});
-
+// 게임 시작 버튼 클릭 시
 document.getElementById("startButton").addEventListener("click", function() {
+    // edit.html로 이동
     window.location.href = '../edit/edit.html';
 });
 
-document.getElementById('howButton').addEventListener('mouseover', function() {
-    click.play();
-});
-
+// 게임 설명 버튼 클릭 시
 document.getElementById('howButton').addEventListener('click', function() {
+    // how.html로 이동
     window.location.href = '../how/how.html';
 });
 
+// volumeOff 클릭 시
 document.getElementById('volumeOff').addEventListener('click', function() {
-    // home_audio.mp3 재생
+    // 배경음악 재생
     audio.play();
 
-    // volumeOff 이미지 변경
+    // volumeOff -> volumeOn 이미지 변경
     document.getElementById('volumeOff').style.display = 'none';
-    document.getElementById('volumeUp').style.display = 'block';
+    document.getElementById('volumeOn').style.display = 'block';
 });
 
-document.getElementById('volumeUp').addEventListener('click', function() {
-    // home_audio.mp3 중지
+// volumeOn 클릭 시
+document.getElementById('volumeOn').addEventListener('click', function() {
+    // 배경음악 중지
     audio.pause();
 
-    // volumeUp 이미지 변경
-    document.getElementById('volumeUp').style.display = 'none';
+    // volumeOn -> volumeOff 이미지 변경
+    document.getElementById('volumeOn').style.display = 'none';
     document.getElementById('volumeOff').style.display = 'block';
 });
 

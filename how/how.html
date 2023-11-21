@@ -10,7 +10,10 @@
 </head>
 <body>
     <div class="container">
+        <!-- 로고 -->
         <h2>Baseball Simulation</h2>
+
+        <!-- 게임 설명 -->
         <pre id="explain">
             [게임 배경]
             게임 전 설정한 난이도(1/3/5점차) <span class="red">9회말 만루 상황</span>을 플레이한다.
@@ -23,27 +26,40 @@
             · 만약 <span class="red">투수가 던진 공의 방향</span>과 <span class="red">타자가 선택한 방향</span>이 같다면 확률에 따라 <span class="red">헛스윙/안타/2루타/3루타/홈런</span>을 기록한다.
             · <span class="red">타자와 투수가 둘 다 볼을 선택</span>했다면 확률에 따라 <span class="red">볼/안타/2루타/3루타/홈런</span>을 기록한다.
         </pre>
+
+        <!-- 스트라이크, 볼 존 이미지 -->
         <div id="example">
             <img src="img/ex.png" alt="example_img" id="example_img">
             <br>↑<br>
             스트라이크 4방향과 볼을 클릭하는 곳
         </div>
+
+        <!-- 뒤로 가기 버튼 -->
         <div id="button1">
-            <button class="btn" id="backButton"><span>뒤로 가기</span></button>
+            <button class="btn" id="backButton" onmouseover="mouseOver()"><span>뒤로 가기</span></button>
         </div>
-        <i class="material-icons" id="volumeUp">volume_up</i>
+
+        <!-- 게임 방법 소개 모달창 -->
+        <div class="modal" id="okModal">
+            <div>게임 방법입니다.<br><br></div>
+            <button class="btn" id="modalCloseButton" onmouseover="mouseOver()"><span>확인</span></button>
+        </div>
+
+        <!-- 볼륨 ON / OFF 버튼 -->
+        <i class="material-icons" id="volumeOn">volume_up</i>
         <i class="material-icons" id="volumeOff">volume_off</i>
+        
+        <!-- 버전 정보 -->
         <div id="version">
             ver 1.4
         </div>
+
+        <!-- 개발자 정보 -->
         <div id="developer">
             202002529 이어진
         </div>
     </div>
-    <div class="modal" id="okModal">
-        <div>게임 방법입니다.<br><br></div>
-        <button class="btn" id="modalCloseButton"><span>확인</span></button>
-    </div>
+    
     <script src="howScript.js"></script>
 </body>
 </html>

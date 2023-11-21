@@ -10,28 +10,37 @@
 </head>
 <body>
     <div class="container">
+        <!-- 로고 -->
         <h2>Baseball Simulation</h2>
+
+        <!-- 타자 -->
         <div id="batters">
             <p id="nameLimit">(2~4자)</p>
-            <p>1번타자 <input type="text" value="김일번" id="batter1"></input></p>
-            <p>2번타자 <input type="text" value="손이번" id="batter2"></input></p>
-            <p>3번타자 <input type="text" value="양삼번" id="batter3"></input></p>
-            <p>4번타자 <input type="text" value="이사번" id="batter4"></input></p>
-            <p>5번타자 <input type="text" value="임오번" id="batter5"></input></p>
-            <p>6번타자 <input type="text" value="정육번" id="batter6"></input></p>
-            <p>7번타자 <input type="text" value="진칠번" id="batter7"></input></p>
-            <p>8번타자 <input type="text" value="최팔번" id="batter8"></input></p>
-            <p>9번타자 <input type="text" value="한구번" id="batter9"></input></p>
+            <p>1번타자 <input type="text" value="김일번" id="batter1"></p>
+            <p>2번타자 <input type="text" value="손이번" id="batter2"></p>
+            <p>3번타자 <input type="text" value="양삼번" id="batter3"></p>
+            <p>4번타자 <input type="text" value="이사번" id="batter4"></p>
+            <p>5번타자 <input type="text" value="임오번" id="batter5"></p>
+            <p>6번타자 <input type="text" value="정육번" id="batter6"></p>
+            <p>7번타자 <input type="text" value="진칠번" id="batter7"></p>
+            <p>8번타자 <input type="text" value="최팔번" id="batter8"></p>
+            <p>9번타자 <input type="text" value="한구번" id="batter9"></p>
         </div>
+
         <div id="center">
+            <!-- 팀 이름 -->
             <div id="teamName">
                 <p>팀 이름 <span id="teamNameLimit">(2~10자)</span></p>
-                <p><input type="text" value="컴퓨터융합학부" id="teamNameInput"></input></p>
+                <p><input type="text" value="컴퓨터융합학부" id="teamNameInput"></p>
             </div>
+
+            <!-- 팀 약칭 -->
             <div id="teamAcronym">
                 <p>팀 약칭 <span id="teamAcronymLimit">(2~3자)</span></p>
-                <p><input type="text" value="컴융" id="teamAcronymInput"></input></p>
+                <p><input type="text" value="컴융" id="teamAcronymInput"></p>
             </div>
+
+            <!-- 난이도 -->
             <div id="level">
                 <p><label for="difficulty">난이도</label>
                 <br>
@@ -43,25 +52,38 @@
                 </p>
             </div>
         </div>
+
+        <!-- 시작 하기 버튼 -->
         <div id="button1">
-            <button class="btn" id="startButton"><span>시작 하기</span></button>
+            <button class="btn" id="startButton" onmouseover="mouseOver()"><span>시작 하기</span></button>
         </div>
+
+        <!-- 뒤로 가기 버튼 -->
         <div id="button2">
-            <button class="btn" id="backButton"><span>뒤로 가기</span></button>
+            <button class="btn" id="backButton" onmouseover="mouseOver()"><span>뒤로 가기</span></button>
         </div>
-        <i class="material-icons" id="volumeUp">volume_up</i>
+
+        <!-- 볼륨 ON / OFF 버튼 -->
+        <i class="material-icons" id="volumeOn">volume_up</i>
         <i class="material-icons" id="volumeOff">volume_off</i>
+        
+        <!-- 버전 정보 -->
         <div id="version">
             ver 1.4
         </div>
+
+        <!-- 개발자 정보 -->
         <div id="developer">
             202002529 이어진
         </div>
     </div>
+
+    <!-- 수정 설명 모달창 -->
     <div class="modal" id="okModal">
         <div>선수, 팀, 난이도를 수정할 수 있습니다.<br><br></div>
-        <button class="btn" id="modalCloseButton"><span>확인</span></button>
+        <button class="btn" id="modalCloseButton" onmouseover="mouseOver()"><span>확인</span></button>
     </div>
+
     <script src="editScript.js"></script>
 </body>
 </html>

@@ -10,41 +10,61 @@
 </head>
 <body>
     <div class="container">
+        <!-- 로고 -->
         <h2>Baseball Simulation</h2>
+
+        <!-- 타자 -->
         <div id="batters"></div>
+
+        <!-- 경기장 -->
         <img src="field/0111.png" alt="field" id="field">
+
+        <!-- 전광판 -->
         <span id="score">
-            <div id="pc">PC</div>
-            <div id="pcScore">0</div>
-            <div id="userScore">0</div>
-            <div id="teamNickname"></div>
+            <span id="pc">PC</span>
+            <span id="pcScore">0</span>
+            <span id="userScore">0</span>
+            <span id="teamNickname"></span>
         </span>
+
+        <!-- 볼 카운트 -->
         <span id="ballCount">
-            <div id="ball" class="bsoRow">
-                <div class="bso">B</div>
-                <div id="bCount" class="counts">
-                    <div class="circle" id="b1"></div><div class="circle" id="b2"></div><div class="circle" id="b3"></div>
-                </div>
-            </div>
-            <div id="strike" class="bsoRow">
-                <div class="bso">S</div>
-                <div id="sCount" class="counts">
-                    <div class="circle" id="s1"></div><div class="circle" id="s2"></div>
-                </div>
-            </div>
-            <div id="out" class="bsoRow">
-                <div class="bso">O</div>
-                <div id="oCount" class="counts">
-                    <div class="circle" id="o1"></div><div class="circle" id="o2"></div>
-                </div>
-            </div>
+            <!-- 볼 -->
+            <span id="ball" class="bsoRow">
+                <span class="bso">B</span>
+                <span id="bCount" class="counts">
+                    <span class="circle" id="b1"></span><span class="circle" id="b2"></span><span class="circle" id="b3"></span>
+                </span>
+            </span>
+
+            <!-- 스트라이크 -->
+            <span id="strike" class="bsoRow">
+                <span class="bso">S</span>
+                <span id="sCount" class="counts">
+                    <span class="circle" id="s1"></span><span class="circle" id="s2"></span>
+                </span>
+            </span>
+
+            <!-- 아웃 -->
+            <span id="out" class="bsoRow">
+                <span class="bso">O</span>
+                <span id="oCount" class="counts">
+                    <span class="circle" id="o1"></span><span class="circle" id="o2"></span>
+                </span>
+            </span>
         </span>
-        <span id="zone">
+
+        <!-- 스트라이크, 볼 존 -->
+        <div id="zone">
+            <!-- 볼 존 -->
             <div id="ballZone">
-                <div id="strikeZone">
-                </div>
+                <!-- 스트라이크 존 -->
+                <span id="strikeZone">
+                </span>
             </div>
-        </span>
+        </div>
+
+        <!-- 공, 배트 이미지 -->
         <img src="img/ball.png" alt="top_ball_img" class="ball_img" id="ball_img_top">
         <img src="img/bat.png" alt="top_bat_img" class="bat_img" id="bat_img_top">
         <img src="img/ball.png" alt="botoom_ball_img" class="ball_img" id="ball_img_bottom">
@@ -55,18 +75,26 @@
         <img src="img/bat.png" alt="right_bat_img" class="bat_img" id="bat_img_right">
         <img src="img/ball.png" alt="ball_ball_img" class="ball_img" id="ball_img_ball">
         <img src="img/bat.png" alt="ball_bat_img" class="bat_img" id="bat_img_ball">
+        
+        <!-- 해설창 -->
         <textarea id="commentary" readonly></textarea>
+
+        <!-- 시작 버튼 -->
         <p id="play">START</p>
         <i class="material-icons" id="playButton">play_arrow</i>
+        
+        <!-- 세팅 모달창 -->
         <div class="modal" id="settingModal">
             <div id="icon"><i class="material-icons" id="closeButton">close</i></div>
             <div class="button">
-                <button class="btn" id="restartButton"><span>다시 하기</span></button>
+                <button class="btn" id="restartButton" onmouseover="mouseOver()"><span>다시 하기</span></button>
             </div>
             <div class="button">
-                <button class="btn" id="homeButton"><span>포기 하기</span></button>
+                <button class="btn" id="homeButton" onmouseover="mouseOver()"><span>포기 하기</span></button>
             </div>
         </div>
+
+        <!-- 결과 모달창 -->
         <img src="img/result_pitcher.png" alt="result_pitcher" id="result_pitcher">
         <img src="img/result_batter.png" alt="result_batter" id="result_batter">
         <div class="modal" id="gameover">
@@ -80,23 +108,30 @@
             </div>
             <div id="finalButton">
                 <div class="button">
-                    <button class="btn" id="restartButton2"><span>다시 하기</span></button>
+                    <button class="btn" id="restartButton2" onmouseover="mouseOver()"><span>다시 하기</span></button>
                 </div>
                 <div class="button">
-                    <button class="btn" id="homeButton2"><span>홈으로</span></button>
+                    <button class="btn" id="homeButton2" onmouseover="mouseOver()"><span>홈으로</span></button>
                 </div>
             </div>
         </div>
+
+        <!-- 세팅, 볼륨 ON / OFF 버튼 -->
         <i class="material-icons" id="setting">settings</i>
-        <i class="material-icons" id="volumeUp">volume_up</i>
+        <i class="material-icons" id="volumeOn">volume_up</i>
         <i class="material-icons" id="volumeOff">volume_off</i>
+        
+        <!-- 버전 정보 -->
         <div id="version">
             ver 1.4
         </div>
+
+        <!-- 개발자 정보 -->
         <div id="developer">
             202002529 이어진
         </div>
     </div>
+
     <script src="gameScript.js"></script>
 </body>
 </html>

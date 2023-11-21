@@ -10,28 +10,46 @@
 </head>
 <body>
     <div class="container">
+        <!-- 로고 -->
         <h1>Baseball Simulation</h1>
+        
+        <!-- 게임 시작 버튼 -->
         <div class="button">
-            <button class="btn" id="startButton"><span>게임 시작</span></button>
+            <button class="btn" id="startButton" onmouseover="mouseOver()"><span>게임 시작</span></button>
         </div>
+
+        <!-- 게임 설명 버튼 -->
         <div class="button">
-            <button class="btn" id="howButton"><span>게임 설명</span></button>
+            <button class="btn" id="howButton" onmouseover="mouseOver()"><span>게임 설명</span></button>
         </div>
+
+        <!-- 타자 이미지 -->
         <img src="img/batter.png" alt="batter_img" id="batter_img">
+
+        <!-- 투수 이미지 -->
         <img src="img/pitcher.png" alt="pitcher_img" id="pitcher_img">
+
+        <!-- 게임 버전별 업데이트 모달창 -->
         <div class="modal" id="versionModal">
             <textarea id="versionTextarea" readonly></textarea>
-            <button class="btn" id="versionCloseButton"><span>확인</span></button>
+            <button class="btn" id="versionCloseButton" onmouseover="mouseOver()"><span>확인</span></button>
         </div>
-        <i class="material-icons" id="volumeUp">volume_up</i>
+
+        <!-- 볼륨 ON / OFF 버튼 -->
+        <i class="material-icons" id="volumeOn">volume_up</i>
         <i class="material-icons" id="volumeOff">volume_off</i>
+        
+        <!-- 버전 정보 -->
         <div id="version">
             ver 1.4
         </div>
+
+        <!-- 개발자 정보 -->
         <div id="developer">
             202002529 이어진
         </div>
     </div>
+    
     <script src="homeScript.js"></script>
 </body>
 </html>
