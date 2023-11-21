@@ -125,28 +125,30 @@ var outCount = 0;
 // 게임 종료 조건
 function isgameover() {
     if (outCount == 3 || score > Number(pcScore.textContent)) {
-        var allBall = document.getElementsByClassName('ball_img');
-        for (var i = 0; i < allBall.length; i++) {
-            allBall[i].style.display = 'none';
-        }
-        var allbat = document.getElementsByClassName('bat_img');
-        for (var i = 0; i < allbat.length; i++) {
-            allbat[i].style.display = 'none';
-        }
-        document.getElementById('gameover').style.display = 'block';
-        document.getElementById('result_pitcher').style.display = 'block';
-        document.getElementById('result_batter').style.display = 'block';
-        var result = document.getElementById('result');
-        if (score > Number(pcScore.textContent)) {
-            result.textContent = "WIN";
-        } else if (score == Number(pcScore.textContent)) {
-            result.textContent = "DRAW";
-        } else {
-            result.textContent = "LOSE";
-        }
-        document.getElementById('finalScorePc').textContent = pcScore.textContent;
-        document.getElementById('finalScoreUser').textContent = userScore.textContent;
-        document.getElementById('UserName').textContent = teamName;
+        setTimeout(() => {
+            var allBall = document.getElementsByClassName('ball_img');
+            for (var i = 0; i < allBall.length; i++) {
+                allBall[i].style.display = 'none';
+            }
+            var allbat = document.getElementsByClassName('bat_img');
+            for (var i = 0; i < allbat.length; i++) {
+                allbat[i].style.display = 'none';
+            }
+            document.getElementById('gameover').style.display = 'block';
+            document.getElementById('result_pitcher').style.display = 'block';
+            document.getElementById('result_batter').style.display = 'block';
+            var result = document.getElementById('result');
+            if (score > Number(pcScore.textContent)) {
+                result.textContent = "WIN";
+            } else if (score == Number(pcScore.textContent)) {
+                result.textContent = "DRAW";
+            } else {
+                result.textContent = "LOSE";
+            }
+            document.getElementById('finalScorePc').textContent = pcScore.textContent;
+            document.getElementById('finalScoreUser').textContent = userScore.textContent;
+            document.getElementById('UserName').textContent = teamName;
+        }, 1000);    
     }
 }
 
