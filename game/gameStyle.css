@@ -407,3 +407,13 @@ body::before {
     top: 62%;
     left: 47.5%;
 }
+
+.text {
+    position: fixed;
+    top: 35%;
+    left: 25%;
+    font-size: 100px;
+    color: red;
+    opacity: 0;
+    transition: opacity 1.5s;
+}
